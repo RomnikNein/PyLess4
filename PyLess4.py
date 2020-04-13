@@ -1,4 +1,5 @@
 import random
+import datetime
 '''
 1. Напишите функцию (F): на вход список имен и целое число N;
 на выходе список длины N случайных имен из первого списка
@@ -55,13 +56,31 @@ print('Самое частое имя: ', f2_dict[0][0])
 def F(z):
     '''
     :param z: список случайных имен
-    :return:
+    :return: Редкая буква
     '''
     f3_dict = {}
     for i in z:
         for a in i:
             f3_dict[a] = f3_dict.get(a, 0) + 1
     f3_dict = sorted(list(f3_dict.items()), key=lambda x: x[1])
-    return f3_dict
+    return f3_dict[0]
 f4_dict = F(f_list)
-print(f4_dict)
+print('Самая редкая буква, с которой начинаеются имена: ', f4_dict)
+
+'''
+4. В файле с логами найти дату самого позднего лога (по метке времени)
+'''
+
+log_file = open('log', 'r', encoding = 'utf-8')
+
+def F(logs):
+    '''
+    :param logs: файл с логами
+    :return: дата позднего лога
+    '''
+    date = []
+    log_text = log_file.read().split(sep='\n')
+    data_list = [log_text[i][0:10] for i in range(len(log_text))]
+    data_list.sort()
+    return data_list[-1]
+print('Дата самого позднего лога: ', F(log_file))
