@@ -78,7 +78,6 @@ def F(logs):
     :param logs: файл с логами
     :return: дата позднего лога
     '''
-    date = []
     log_text = log_file.read().split(sep='\n')
     data_list = [log_text[i][0:10] for i in range(len(log_text))]
     data_list.sort()
